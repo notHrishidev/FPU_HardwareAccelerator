@@ -78,7 +78,7 @@ module FPU (
                 FPUAdj:
                     begin
                         addA_reg    <= addOut;
-                        addB_reg    <= mulOut16[15] ? 1'b1 : 1'b0;
+                        addB_reg    <= mulOut16[15] ? 8'd1 : 8'd0;
                         mulOut <= mulOut16[15] ? mulOut16[14:8] : mulOut16[13:7];
                     end
                 ResOut:
@@ -96,7 +96,7 @@ module FPU (
     //Overflow logic (Sticky flag, gets set once ovf_out ever becomes 1)
     always @(posedge clk) begin
         if (ovf_out) begin
-            ovf=1;
+            ovf <= 1;
         end
     end
 endmodule

@@ -1,0 +1,41 @@
+`include "../../src/headers.v"
+module tb_FPU ();
+    reg clk, reset, burst, enable;
+    reg [15:0] A, B;
+    wire [15:0] P;
+    wire ovf, ready;
+
+    FPU DFT(.A(A), .B(B), .clk(clk), .reset(reset), .burst(burst), .enable(enable), .P(P), .ovf(ovf), .ready(ready));
+
+    // 1. Consistent Clock Generation (100MHz example)
+    always #50 clk = ~clk; 
+
+    initial begin
+        // 2. Initialize signals
+        clk = 0;
+        reset = 1;
+        enable = 1;
+        burst=0;
+        A = 0;
+        B = 0;
+
+        // 3. Hold reset for a few cycles
+        #20 reset = 0;
+
+        // 4. Apply Stimulus
+        @(posedge clk);
+        A = 16'b0000000101000000;
+        B = 16'b0000000110000000;
+        burst=0;
+
+	    @(posedge ready);
+	    enable=0;
+
+        // 5. Wait for 'ready' signal or a set number of cycles
+        //wait(ready == 1); 
+        @(posedge clk);
+        $display("A=%b, B=%b, Output P=%b", A, B, P);
+        //#1000;
+        //$finish;
+    end
+endmodule

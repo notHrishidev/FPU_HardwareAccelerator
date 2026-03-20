@@ -1,2 +1,4 @@
 work/
 vsim.wif
+*.bak
+*.out

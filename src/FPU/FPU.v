@@ -30,13 +30,13 @@ module FPU (
     //RESET LOGIC:
     always @(*) begin
         if (reset) begin
-            mulA_reg    <= 0;
-            mulB_reg    <= 0;
-            addA_reg    <= 0;
-            addB_reg    <= 0;
-            ovf         <= 0;
-            ready       <= 1;
-            nxtSt       <= Idle;
+            mulA_reg  = 0;
+            mulB_reg  = 0;
+            addA_reg  = 0;
+            addB_reg  = 0;
+            ovf       = 0;
+            ready     = 1;
+            nxtSt     = Idle;
         end
     end
 

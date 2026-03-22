@@ -34,7 +34,7 @@
 `include "/src/FPU/FPU.v"
 */
 
-
+/*
 //For Vedic multiplier
 `include "C:/AAA_quickAccess/HardwareAccelerator/src/VedicMultiplier/b2RCA.v"
 `include "C:/AAA_quickAccess/HardwareAccelerator/src/VedicMultiplier/b4CSLA.v"
@@ -50,3 +50,4 @@
 
 //FPU Instantiation
 `include "C:/AAA_quickAccess/HardwareAccelerator/src/FPU/FPU.v"
+*/
